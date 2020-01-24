@@ -93,6 +93,18 @@ const numberDecimal = (v) => {
   }
 }
 
+const zipLimit = (v) => {
+  if (/^[0-9]{4}$/.test(v)) {
+    return true
+  } else {
+    return false
+  }
+}
+
+const zipMinimum = (v) => {
+  return numberMinimum(v, 1000)
+}
+
 export default {
   ean,
   numberPrecision,
@@ -100,5 +112,7 @@ export default {
   numberMinimum,
   numberDot,
   numberMinus,
-  numberDecimal
+  numberDecimal,
+  zipLimit,
+  zipMinimum
 }
