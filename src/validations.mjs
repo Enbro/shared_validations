@@ -10,17 +10,17 @@ const ean = (v) => {
   const checkDigit = parseInt(v.toString()[length - 1], 10)
   const valid = (10 - (checkSum % 10)) % 10 === checkDigit
 
-  if (length === 18 && valid) {
+  if (
+    length === 18 &&
+    v.startsWith('54') &&
+    valid
+  ) {
     return true
   } else {
     return false
   }
 
   return result;
-}
-
-const constants = () => {
-  return $constants
 }
 
 const numberPrecision = (v, precision) => {
