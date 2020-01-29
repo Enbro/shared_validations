@@ -105,6 +105,26 @@ const zipMinimum = (v) => {
   return numberMinimum(v, 1000)
 }
 
+const vatStartBe0 = (v) => {
+  return v.toLowerCase().startsWith('be0')
+}
+
+const vat9Numbers = (v) => {
+  return !/^be0\d{9}$/gi.test(v)
+}
+
+const vat0 = (v) => {
+  return /^be0000000000/gi.test(v)
+}
+
+const vatStartEnterprise = (v) => {
+  return /^[0,1]/.test(v)
+}
+
+const vatEnterprise = (v) => {
+  return !/^[0,1]\d{3}\.\d{3}\.\d{3}$/.test(v)
+}
+
 export default {
   ean,
   numberPrecision,
@@ -114,5 +134,10 @@ export default {
   numberMinus,
   numberDecimal,
   zipLimit,
-  zipMinimum
+  zipMinimum,
+  vatStartBe0,
+  vat9Numbers,
+  vat0,
+  vatStartEnterprise,
+  vatEnterprise,
 }
