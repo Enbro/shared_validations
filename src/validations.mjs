@@ -96,73 +96,48 @@ const ean = (v) => {
 }
 
 const numberPrecision = (v, precision) => {
-  if (
+  return (
     v === null ||
     precision === undefined ||
     !(v.includes('.') && RegExp(`\\.\\d{${precision + 1}}`).test(v))
-  ) {
-    return true
-  } else {
-    return false
-  }
+  )
 }
 
 const numberMaximum = (v, maximum) => {
-  if (
+  return (
     v === null ||
     maximum === undefined ||
     v <= maximum
-  ) {
-    return true
-  } else {
-    return false
-  }
-}
+  ) }
 
 const numberMinimum = (v, minimum) => {
-  if (
+  return (
     v === null ||
     minimum === undefined ||
     v >= minimum
-  ) {
-    return true
-  } else {
-    return false
-  }
+  )
 }
 
 const numberDot = (v) => {
-  if ( 
+  return ( 
     v === null ||
     v.match(/\./gi) === null ||
     v.match(/\./gi).length <= 1
-  ) {
-    return true
-  } else {
-    return false
-  }
+  )
 }
 
 const numberMinus = (v) => {
-  if ( 
+  return ( 
     v === null ||
     v.lastIndexOf('-') <= 0
-  ) {
-    return true
-  } else {
-    return false
-  }
+  )
 }
 
 const numberDecimal = (v) => {
-  if ( 
+  return ( 
     v === null ||
     /^[0-9.\\-]{1,}$/.test(v)
-  ) {
-    return true
-  } else {
-    return false
-  }
+  )
 }
 
 const numberWhole = (v) => {
