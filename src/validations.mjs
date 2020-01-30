@@ -165,6 +165,10 @@ const numberDecimal = (v) => {
   }
 }
 
+const numberWhole = (v) => {
+  return (v % 1 === 0)
+}
+
 const zipLimit = (v) => {
   if (/^[0-9]{4}$/.test(v)) {
     return true
@@ -222,6 +226,7 @@ export default {
   numberDot,
   numberMinus,
   numberDecimal,
+  numberWhole,
   zipLimit,
   zipMinimum,
   vatStartBe0,
