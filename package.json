@@ -1,7 +1,7 @@
 {
   "name": "@enbro/SharedValidations",
   "version": "1.0.0",
-  "main": "src/index.mjs",
+  "main": "src/es5/index.js",
   "repository": "https://github.com/Enbro/shared_validations",
   "author": "buwaro <buwaro@gmail.com>",
   "license": "MIT",
