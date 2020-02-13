@@ -27,7 +27,7 @@ export const phonePlus = (v) => {
 };
 
 export const phoneNoLetters = (v) => {
-  return /^[-+()1-9]*$/.test(v)
+  return /^[-+()0-9]*$/.test(v)
 };
 
 export const domainCharacters = (v) => {
