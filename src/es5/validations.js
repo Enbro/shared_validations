@@ -42,7 +42,7 @@ var phonePlus = function phonePlus(v) {
 exports.phonePlus = phonePlus;
 
 var phoneNoLetters = function phoneNoLetters(v) {
-  return /^[-+()1-9]*$/.test(v);
+  return /^[-+()0-9]*$/.test(v);
 };
 
 exports.phoneNoLetters = phoneNoLetters;
