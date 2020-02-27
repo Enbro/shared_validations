@@ -18,12 +18,44 @@ export const email = (v) => {
   return /^[a-zA-Zа-яА-Я0-9.!#$%&’*+/=?^_`{|}~-]+@(?:[a-zA-Zа-яА-Я0-9-]+\.)+[a-zA-Zа-яА-Я0-9-]{2,63}$/.test(v)
 };
 
-export const phoneMaximumLength = (v) => {
-  return v.length !== 13
+export const phoneMinimumLength = (phone) => {
+  if (/^04/.test(phone)) {
+    return phone.length >= 10
+  } else if (/^0/.test(phone)) {
+    return phone.length >= 9
+  } else if (/^\+324/.test(phone)) {
+    return phone.length >= 12
+  } else if (/^\+32/.test(phone)) {
+    return phone.length >= 11
+  } else {
+    return phone.length >= 11
+  }
+};
+
+export const phoneMaximumLength = (phone) => {
+  if (/^04/.test(phone)) {
+    return phone.length <= 10
+  } else if (/^0/.test(phone)) {
+    return phone.length <= 9
+  } else if (/^\+324/.test(phone)) {
+    return phone.length <= 12
+  } else if (/^\+32/.test(phone)) {
+    return phone.length <= 11
+  } else {
+    return phone.length <= 12
+  }
 };
 
 export const phonePlus = (v) => {
   return /^\+?[^+]*$/.test(v)
+};
+
+export const phoneBelgiumPrefix = (v) => {
+  return /^(\+32|0)/.test(v)
+};
+
+export const phoneOnlyNumbers = (v) => {
+  return /^\+?[0-9]*$/.test(v)
 };
 
 export const phoneNoLetters = (v) => {
@@ -105,7 +137,7 @@ export const numberDot = (v) => {
 }
 
 export const numberMinus = (v) => {
-  return ( 
+  return (
     v === null ||
     v.lastIndexOf('-') <= 0
   )
