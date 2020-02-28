@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.vatEnterprise = exports.vatStartEnterprise = exports.vat0 = exports.vat9Numbers = exports.vatStartBe0 = exports.zipMinimum = exports.zipLimit = exports.numberWhole = exports.numberDecimal = exports.numberMinus = exports.numberDot = exports.numberMinimum = exports.numberMaximum = exports.numberPrecision = exports.ean = exports.alias = exports.passwordIncludesNumbers = exports.passwordIncludesUpcase = exports.passwordIncludesDowncase = exports.passwordMaximumLength = exports.passwordMinimumLength = exports.passwordCharacters = exports.password = exports.domainLength = exports.domainCharacters = exports.phoneNoLetters = exports.phonePlus = exports.phoneMaximumLength = exports.email = exports.name = exports.required = exports.string = void 0;
+exports.vatEnterprise = exports.vatStartEnterprise = exports.vat0 = exports.vat9Numbers = exports.vatStartBe0 = exports.zipMinimum = exports.zipLimit = exports.numberWhole = exports.numberDecimal = exports.numberMinus = exports.numberDot = exports.numberMinimum = exports.numberMaximum = exports.numberPrecision = exports.ean = exports.alias = exports.passwordIncludesNumbers = exports.passwordIncludesUpcase = exports.passwordIncludesDowncase = exports.passwordMaximumLength = exports.passwordMinimumLength = exports.passwordCharacters = exports.password = exports.domainLength = exports.domainCharacters = exports.phoneOnlyNumbers = exports.phoneNoLetters = exports.phonePlus = exports.phoneBelgiumPrefix = exports.phoneMinimumLength = exports.phoneMaximumLength = exports.email = exports.name = exports.required = exports.string = void 0;
 
 var string = function string(v) {
   return typeof v === 'string' && v.length <= 255;
@@ -29,8 +29,34 @@ var email = function email(v) {
 
 exports.email = email;
 
-var phoneMaximumLength = function phoneMaximumLength(v) {
-  return v.length !== 13;
+var phoneMinimumLength = function phoneMinimumLength(phone) {
+  if (/^04/.test(phone)) {
+    return phone.length >= 10;
+  } else if (/^0/.test(phone)) {
+    return phone.length >= 9;
+  } else if (/^\+324/.test(phone)) {
+    return phone.length >= 12;
+  } else if (/^\+32/.test(phone)) {
+    return phone.length >= 11;
+  } else {
+    return phone.length >= 11;
+  }
+};
+
+exports.phoneMinimumLength = phoneMinimumLength;
+
+var phoneMaximumLength = function phoneMaximumLength(phone) {
+  if (/^04/.test(phone)) {
+    return phone.length <= 10;
+  } else if (/^0/.test(phone)) {
+    return phone.length <= 9;
+  } else if (/^\+324/.test(phone)) {
+    return phone.length <= 12;
+  } else if (/^\+32/.test(phone)) {
+    return phone.length <= 11;
+  } else {
+    return phone.length <= 12;
+  }
 };
 
 exports.phoneMaximumLength = phoneMaximumLength;
@@ -40,6 +66,18 @@ var phonePlus = function phonePlus(v) {
 };
 
 exports.phonePlus = phonePlus;
+
+var phoneBelgiumPrefix = function phoneBelgiumPrefix(v) {
+  return /^(\+32|0)/.test(v);
+};
+
+exports.phoneBelgiumPrefix = phoneBelgiumPrefix;
+
+var phoneOnlyNumbers = function phoneOnlyNumbers(v) {
+  return /^\+?[0-9]*$/.test(v);
+};
+
+exports.phoneOnlyNumbers = phoneOnlyNumbers;
 
 var phoneNoLetters = function phoneNoLetters(v) {
   return /^[-+()0-9]*$/.test(v);
