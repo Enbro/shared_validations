@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.vatEnterprise = exports.vatStartEnterprise = exports.vat0 = exports.vat9Numbers = exports.vatStartBe0 = exports.zipMinimum = exports.zipLimit = exports.numberWhole = exports.numberDecimal = exports.numberMinus = exports.numberDot = exports.numberMinimum = exports.numberMaximum = exports.numberPrecision = exports.ean = exports.alias = exports.passwordIncludesNumbers = exports.passwordIncludesUpcase = exports.passwordIncludesDowncase = exports.passwordMaximumLength = exports.passwordMinimumLength = exports.passwordCharacters = exports.password = exports.domainLength = exports.domainCharacters = exports.phoneOnlyNumbers = exports.phoneNoLetters = exports.phonePlus = exports.phoneBelgiumPrefix = exports.phoneMinimumLength = exports.phoneMaximumLength = exports.email = exports.name = exports.required = exports.string = void 0;
+exports.priceDecimalLength = exports.vatEnterprise = exports.vatStartEnterprise = exports.vat0 = exports.vat9Numbers = exports.vatStartBe0 = exports.zipMinimum = exports.zipLimit = exports.numberWhole = exports.numberDecimal = exports.numberMinus = exports.numberDot = exports.numberMinimum = exports.numberMaximum = exports.numberPrecision = exports.ean = exports.alias = exports.passwordIncludesNumbers = exports.passwordIncludesUpcase = exports.passwordIncludesDowncase = exports.passwordMaximumLength = exports.passwordMinimumLength = exports.passwordCharacters = exports.password = exports.domainLength = exports.domainCharacters = exports.phoneNoLetters = exports.phoneOnlyNumbers = exports.phoneBelgiumPrefix = exports.phonePlus = exports.phoneMaximumLength = exports.phoneMinimumLength = exports.email = exports.name = exports.required = exports.string = void 0;
 
 var string = function string(v) {
   return typeof v === 'string' && v.length <= 255;
@@ -244,3 +244,16 @@ var vatEnterprise = function vatEnterprise(v) {
 };
 
 exports.vatEnterprise = vatEnterprise;
+
+var priceDecimalLength = function priceDecimalLength(v) {
+  var splited = v.split(/[,.]/);
+
+  if (splited.length > 2) {
+    return false;
+  }
+
+  var decimals = splited[splited.length - 1];
+  return decimals.length < 6;
+};
+
+exports.priceDecimalLength = priceDecimalLength;

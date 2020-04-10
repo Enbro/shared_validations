@@ -178,3 +178,13 @@ export const vatStartEnterprise = (v) => {
 export const vatEnterprise = (v) => {
   return !/^[0,1]\d{3}\.\d{3}\.\d{3}$/.test(v)
 }
+
+export const priceDecimalLength = (v) => {
+  const splited = v.split(/[,.]/)
+  if (splited.length > 2) {
+    return false
+  }
+
+  const decimals = splited[splited.length - 1];
+  return decimals.length < 6
+}
